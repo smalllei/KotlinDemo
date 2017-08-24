@@ -6,5 +6,6 @@ package com.zxl.kotlindemo.base
  * @time: 17:24
  * @description:
  */
-class BaseModel {
-}
+class BaseModel<T> (val error: Int,
+                 val reason: String,
+                 val result: T)
