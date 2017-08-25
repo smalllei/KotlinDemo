@@ -8,16 +8,12 @@ package com.zxl.kotlindemo.history
  */
 
 data class HistoryModel(val result: List<HistoryBean>,
-                        val error: Int,
+                        val error_code: Int,
                         val reason: String) {
-    class HistoryBean(val _id: Int,
+    class HistoryBean(val e_id: Int,
                       val title: String,
-                      val pic: String,
-                      val year: Int,
-                      val month: Int,
-                      val day: Int,
-                      val des: String,
-                      val lunar: String
+                      val day: String,
+                      val date: String
     )
 
 }

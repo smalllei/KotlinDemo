@@ -14,7 +14,7 @@ import android.widget.TextView
 class MainAdapter(val lists : List<String>,val listener : OnClickItemListener) : RecyclerView.Adapter<MainAdapter.ViewHolder>() {
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.textView.setPadding(24,12,12,24)
+        holder.textView.setPadding(24,12,200,24)
         holder.textView.setTextSize(20F)
         holder.textView.text=lists[position]
         holder.textView.setOnClickListener { _ -> listener.onClickItem(position) }

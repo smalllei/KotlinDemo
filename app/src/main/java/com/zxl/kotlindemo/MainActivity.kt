@@ -5,6 +5,7 @@ import android.view.View
 
 
 import com.zxl.kotlindemo.base.BaseActivity
+import com.zxl.kotlindemo.history.HistoryActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity() {
@@ -28,7 +29,10 @@ class MainActivity : BaseActivity() {
         main_recycler.layoutManager = LinearLayoutManager(this)
         main_recycler.adapter = MainAdapter(items, object : MainAdapter.OnClickItemListener {
             override fun onClickItem(position: Int) {
-              showToast(items[position])
+                when (position){
+                    0 -> startActivity(HistoryActivity::class.java,null)
+                }
+
             }
         })
 

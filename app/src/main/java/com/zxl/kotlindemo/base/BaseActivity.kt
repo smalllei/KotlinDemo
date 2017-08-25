@@ -7,6 +7,18 @@ import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import android.widget.Toast
+import io.reactivex.Flowable
+import io.reactivex.Observable
+import io.reactivex.Scheduler
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.CompositeDisposable
+import io.reactivex.functions.Action
+import io.reactivex.functions.Consumer
+import io.reactivex.internal.subscriptions.ArrayCompositeSubscription
+import io.reactivex.internal.subscriptions.SubscriptionHelper
+import io.reactivex.schedulers.Schedulers
+import io.reactivex.subscribers.SafeSubscriber
+import org.reactivestreams.Subscriber
 import java.util.ArrayList
 
 /**
@@ -15,11 +27,11 @@ import java.util.ArrayList
  * @time: 14:39
  * @description:
  */
- abstract class BaseActivity : AppCompatActivity() ,View.OnClickListener{
+abstract class BaseActivity : AppCompatActivity(), View.OnClickListener {
 
-    private val isTest = true
-    protected val TAG = this.javaClass.simpleName
-
+    val isTest = true
+    val TAG = this.javaClass.simpleName
+    val mCompositeDisposable: CompositeDisposable = CompositeDisposable()
     fun showToast(msg: String) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show()
     }
@@ -49,8 +61,21 @@ import java.util.ArrayList
     }
 
     override fun onDestroy() {
-        super.onDestroy()
         openActivity.remove(this)
+        if (!mCompositeDisposable.isDisposed)
+            mCompositeDisposable.dispose()
+        super.onDestroy()
+    }
+
+
+    open fun <M> addDisposable(observable: Observable<M>, subscriber: Subscriber<M>) {
+        mCompositeDisposable.add(
+                observable.subscribeOn(Schedulers.io())
+                        .observeOn(AndroidSchedulers.mainThread())
+                        .subscribe(Consumer<M> { m -> subscriber.onNext(m) },
+                                Consumer<Throwable> { t -> subscriber.onError(t) },
+                                Action { -> subscriber.onComplete() })
+        )
     }
 
 
