@@ -121,7 +121,7 @@ class ImageActivity : Activity(), ViewTreeObserver.OnPreDrawListener {
             override fun onAnimationRepeat(p0: Animator?) {
             }
         })
-        valueAnimator.duration = 5000.toLong()
+        valueAnimator.duration = 1000.toLong()
         valueAnimator.start()
         return true
     }
@@ -163,7 +163,7 @@ class ImageActivity : Activity(), ViewTreeObserver.OnPreDrawListener {
             override fun onAnimationRepeat(p0: Animator?) {
             }
         })
-        valueAnimator.duration = 5000.toLong()
+        valueAnimator.duration = 1000.toLong()
         valueAnimator.start()
     }
 

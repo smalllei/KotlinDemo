@@ -33,7 +33,6 @@ class HistoryDetailActivity : BaseActivity() {
 
     val datas: ArrayList<HistoryDetailModel.HistoryDetailBean.PicUrlBean> = ArrayList<HistoryDetailModel.HistoryDetailBean.PicUrlBean>()
     val gvAdapter: MyGvAdapter = MyGvAdapter(this@HistoryDetailActivity, datas)
-    val statusHeight = getStatusHeight(this)
     override val layoutId: Int
         get() = R.layout.activity_history_detail
 
@@ -52,7 +51,7 @@ class HistoryDetailActivity : BaseActivity() {
                 val points = IntArray(2)
                 view.getLocationInWindow(points)
                 urls.imageViewX = points[0]
-                urls.imageViewY = points[1] - statusHeight
+                urls.imageViewY = points[1] - getStatusHeight(this)
                // urls.imageViewY = points[1] - statusHeight
             }
 //            val intent=Intent(this,TestActivity::class.java)
