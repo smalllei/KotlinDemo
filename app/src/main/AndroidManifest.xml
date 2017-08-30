@@ -18,7 +18,11 @@
             </intent-filter>
         </activity>
         <activity android:name=".history.HistoryActivity"/>
-        <activity android:name=".history.HistoryDetailActivity"/>
+        <activity android:name=".history.HistoryDetailActivity"
+            />
+        <activity android:name=".history.ImageActivity"
+            android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
+        <activity android:name=".history.TestActivity"/>
     </application>
 
 </manifest>
