@@ -6,7 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion "26.0.1"
+    buildToolsVersion "26.0.2"
     defaultConfig {
         applicationId "com.zxl.kotlindemo"
         minSdkVersion 15
@@ -50,4 +50,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:3.6.0'
     implementation 'com.github.bumptech.glide:glide:3.8.0'
     implementation 'com.github.chrisbanes.photoview:library:1.2.4'
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.22'
+    implementation 'com.android.support:design:26.0.0'
+    implementation 'com.github.limxing:Android-PromptDialog:1.1.3'
 }

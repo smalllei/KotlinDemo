@@ -5,6 +5,7 @@ import android.view.View
 
 
 import com.zxl.kotlindemo.base.BaseActivity
+import com.zxl.kotlindemo.douban.DoubanActivity
 import com.zxl.kotlindemo.history.HistoryActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -15,7 +16,7 @@ class MainActivity : BaseActivity() {
     override fun initView() {
         var items = listOf<String>(
                 "历史的今天",
-                "java",
+                "豆瓣电影",
                 "php",
                 "C",
                 "C++",
@@ -31,6 +32,7 @@ class MainActivity : BaseActivity() {
             override fun onClickItem(position: Int) {
                 when (position){
                     0 -> startActivity(HistoryActivity::class.java,null)
+                    1 -> startActivity(DoubanActivity::class.java,null)
                 }
 
             }

@@ -25,6 +25,8 @@
         <activity android:name=".history.ImageActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar"/>
         <activity android:name=".history.TestActivity"/>
+        <activity android:name=".douban.DoubanActivity"/>
+        <activity android:name=".douban.MovieActivity"/>
     </application>
 
 </manifest>
